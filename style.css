@@ -108,7 +108,7 @@ div[onclick] br {
     /* Slightly scale down the button when clicked */
 }
 
-/* Container for the win counters */
+/* General styles */
 div {
     text-align: center;
     margin: 20px 0;
@@ -116,39 +116,47 @@ div {
 
 /* Style for the individual win counters */
 span {
-    font-size: 1.2em;
-    /* Adjust font size as needed */
+    font-size: 1.2em; /* Adjust font size as needed */
     font-weight: bold;
-    margin: 0 15px;
-    /* Space between counters */
-    color: #333;
-    /* Dark text color for better readability */
+    margin: 0 10px; /* Reduced margin for smaller screens */
+    color: #333; /* Dark text color for better readability */
 }
 
 /* Style for the win counts themselves */
 #x-wins,
 #o-wins {
-    color: #000;
-    /* Black color for win counts */
+    color: #000; /* Black color for win counts */
 }
 
 /* Optional: Add a border and background for visual appeal */
 div span {
-    padding: 5px 10px;
+    padding: 5px 8px; /* Adjust padding for better fit */
     border-radius: 5px;
-    background-color: #f8f9fa;
-    /* Light background color */
-    border: 2px solid #ddd;
-    /* Light border color */
+    background-color: #f8f9fa; /* Light background color */
+    border: 2px solid #ddd; /* Light border color */
 }
 
 /* Highlight the current player's win counter */
 #x-wins {
-    color: #d9534f;
-    /* Red color for 'X' wins */
+    color: #d9534f; /* Red color for 'X' wins */
 }
 
 #o-wins {
-    color: #5bc0de;
-    /* Blue color for 'O' wins */
+    color: #5bc0de; /* Blue color for 'O' wins */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    span {
+        font-size: 1em; /* Adjust font size for smaller screens */
+        margin: 0 5px; /* Reduced margin for smaller screens */
+    }
+    
+    div {
+        margin: 10px 0; /* Adjust margin for smaller screens */
+    }
+
+    div span {
+        padding: 3px 6px; /* Adjust padding for better fit on small screens */
+    }
 }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tic tac toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="display">Player X Turn</div>
+    <div id="Win"></div>
+    <div>
+        <span>X Wins: <span id="x-wins">0</span></span>
+        <span>O Wins: <span id="o-wins">0</span></span>
+    </div>
+    <div onclick="play(event)">
+        <button>-</button><button>-</button><button>-</button><br>
+        <button>-</button><button>-</button><button>-</button><br>
+        <button>-</button><button>-</button><button>-</button><br>
+    </div>
+    <button id="restart-button" onclick="restart()">Restart Game</button>
+
+
+    <script>
+        let XTurn = true; // X starts the game
+
+        // Initialize win counters
+        let xWins = 0;
+        let oWins = 0;
+
+        function play(event) {
+            if (event.target.innerHTML === "-" && !event.target.disabled) {
+                const currentPlayer = XTurn ? "X" : "O";
+                event.target.innerHTML = currentPlayer;
+                if (!document.getElementById('Win').innerHTML) {
+                    display.innerHTML = `Player ${XTurn ? "O" : "X"} Turn`;
+                }
+                XTurn = !XTurn;
+
+                checkWin(); // Check for win or draw after the move
+            }
+        }
+
+        function checkWin() {
+            const buttons = Array.from(document.querySelectorAll('div button'));
+            const board = buttons.map(button => button.innerHTML);
+
+            const winningCombinations = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+
+            let gameOver = false;
+
+            winningCombinations.forEach(combination => {
+                const [a, b, c] = combination;
+                if (board[a] !== "-" && board[a] === board[b] && board[a] === board[c]) {
+                    Win.innerHTML = `Player ${board[a]} Wins!`;
+                    display.innerHTML = ""; // Clear turn message
+                    gameOver = true;
+
+                    // Update win counts
+                    if (board[a] === "X") {
+                        xWins++;
+                        document.getElementById('x-wins').innerText = xWins;
+                    } else {
+                        oWins++;
+                        document.getElementById('o-wins').innerText = oWins;
+                    }
+                }
+            });
+
+            if (!gameOver && !board.includes("-")) {
+                Win.innerHTML = "It's a Draw!";
+                display.innerHTML = ""; // Clear turn message
+                gameOver = true;
+            }
+
+            if (gameOver) {
+                const buttons = Array.from(document.querySelectorAll('div button'));
+                buttons.forEach(button => button.disabled = true);
+            }
+        }
+
+        function restart() {
+            const buttons = Array.from(document.querySelectorAll('div button'));
+            buttons.forEach(button => {
+                button.innerHTML = "-";
+                button.disabled = false; // Re-enable all buttons
+            });
+
+            Win.innerHTML = "";
+            display.innerHTML = `Player ${XTurn ? "X" : "O"} Turn`; // Reset the turn indicator
+        }
+    </script>
+
+</body>
+
+</html>

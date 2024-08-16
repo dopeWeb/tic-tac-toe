@@ -1,0 +1,154 @@
+/* Basic styling for the body */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+/* Display and Win messages */
+#display {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#Win {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #d9534f;
+    /* Red color for win/draw messages */
+}
+
+/* Grid container */
+div[onclick] {
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for buttons */
+button {
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #f9f9f9;
+}
+
+/* Disabled state for buttons */
+button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+/* Ensure buttons are sized and spaced correctly */
+div[onclick] button {
+    display: inline-block;
+}
+
+/* Add margin between rows */
+div[onclick] br {
+    margin-bottom: 0;
+}
+
+#restart-button {
+    margin-top: 20px;
+    padding: 10px 60px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #5bc0de;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    /* Smooth background color and scale transition */
+    text-align: center;
+    /* Centers text horizontally */
+    display: inline-flex;
+    /* Use inline-flex to ensure proper centering and alignment */
+    align-items: center;
+    /* Center text vertically */
+    justify-content: center;
+    /* Center text horizontally */
+    height: auto;
+    /* Ensures button height adapts to content */
+    min-height: 40px;
+    /* Ensures button has a minimum height */
+}
+
+#restart-button:hover {
+    background-color: #31b0d5;
+    /* Darker background on hover */
+    transform: scale(1.05);
+    /* Slightly scale up the button on hover */
+}
+
+#restart-button:active {
+    transform: scale(0.98);
+    /* Slightly scale down the button when clicked */
+}
+
+/* Container for the win counters */
+div {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Style for the individual win counters */
+span {
+    font-size: 1.2em;
+    /* Adjust font size as needed */
+    font-weight: bold;
+    margin: 0 15px;
+    /* Space between counters */
+    color: #333;
+    /* Dark text color for better readability */
+}
+
+/* Style for the win counts themselves */
+#x-wins,
+#o-wins {
+    color: #000;
+    /* Black color for win counts */
+}
+
+/* Optional: Add a border and background for visual appeal */
+div span {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    /* Light background color */
+    border: 2px solid #ddd;
+    /* Light border color */
+}
+
+/* Highlight the current player's win counter */
+#x-wins {
+    color: #d9534f;
+    /* Red color for 'X' wins */
+}
+
+#o-wins {
+    color: #5bc0de;
+    /* Blue color for 'O' wins */
+}
